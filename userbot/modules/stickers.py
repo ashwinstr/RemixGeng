@@ -10,7 +10,7 @@ import io
 import math
 import urllib.request
 
-import AioHttp
+from resources.aiohttp_helper import AioHttp
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
@@ -340,7 +340,7 @@ async def cb_sticker(event):
     for result, title in zip(results, titles):
         link_ = (pack.a).get("href")
         id_ = (pack.button).get("data-popup")
-        rrply += f"\n• ID: {id_}\n[{title_}]({link_})"
+        reply += f"\n• ID: {id_}\n[{title_}]({link_})"
     await event.edit(reply)
 
 
