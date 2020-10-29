@@ -10,7 +10,6 @@ import io
 import math
 import urllib.request
 
-from resources.aiohttp_helper import AioHttp
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
@@ -21,6 +20,7 @@ from telethon.tl.types import (
     InputStickerSetID,
 )
 
+from resources.aiohttp_helper import AioHttp
 from userbot import CMD_HELP, bot
 from userbot.events import register
 
