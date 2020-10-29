@@ -9,6 +9,7 @@ import asyncio
 import io
 import math
 import urllib.request
+
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
@@ -318,6 +319,7 @@ async def get_pack_info(event):
     )
 
     await event.edit(OUTPUT)
+
 
 @register(outgoing=True, pattern=r"^\.stickers ?(.*)")
 async def cb_sticker(event):
