@@ -336,10 +336,10 @@ async def cb_sticker(event):
     if not results:
         await event.edit("No results found :(.")
         return
-    reply = f"Stickers for *{split}*:"
+    reply = f"Stickers for {split}:"
     for result, title in zip(results, titles):
         link = result["href"]
-        reply += f"\nâ¢ [{title.get_text()}]({link})"
+        reply += f"\n• [{title.get_text()}]({link})"
 
     await event.edit(reply)
 
