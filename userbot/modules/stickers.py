@@ -328,7 +328,7 @@ async def cb_sticker(event):
         await event.edit("`Provide some name to search for pack.`")
         return
 
-    text = await AioHttp.get_text(f"https://combot.org/telegram/stickers?q={query_}")
+    text = await AioHttp.get_text(f"https://combot.org/telegram/stickers?q={split}")
     soup = bs(text, "lxml")
     results = soup.find_all("div", {"class": "sticker-packheader"})
     title_ = (pack.find("div", {"class": "sticker-packtitle"})).text
