@@ -9,7 +9,7 @@ import asyncio
 import io
 import math
 import urllib.request
-
+import AioHttp
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
@@ -320,7 +320,6 @@ async def get_pack_info(event):
 
     await event.edit(OUTPUT)
 
-
 @register(outgoing=True, pattern=r"^\.stickers ?(.*)")
 async def cb_sticker(event):
     split = event.pattern_match.group(1)
@@ -328,21 +327,20 @@ async def cb_sticker(event):
         await event.edit("`Provide some name to search for pack.`")
         return
 
-    text = requests.get(combot_stickers_url + split).text
-    soup = bs(text, "lxml")
-    results = soup.find_all("a", {"class": "sticker-pack__btn"})
-    titles = soup.find_all("div", "sticker-pack__title")
+    text = await AioHttp.get_text(f"https://combot.org/telegram/stickers?q={query_}")
+    soup = bs(text, 'lxml')
+    results = soup.find_all("div", {'class': "sticker-packheader"})
+    title_ = (pack.find("div", {'class': "sticker-packtitle"})).text
 
     if not results:
         await event.edit("No results found :(.")
         return
-    reply = f"Stickers for {split}:"
+    reply = f"Sticker Packs For{split}:"
     for result, title in zip(results, titles):
-        link = result["href"]
-        reply += f"\n• [{title.get_text()}]({link})"
-
+        link_ = (pack.a).get('href')
+        id_ = (pack.button).get('data-popup')
+        rrply += f"\n• ID: {id_}\n[{title_}]({link_})"
     await event.edit(reply)
-
 
 @register(outgoing=True, pattern="^.getsticker$")
 async def sticker_to_png(sticker):
