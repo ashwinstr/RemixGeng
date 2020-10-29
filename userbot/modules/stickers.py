@@ -9,7 +9,8 @@ import asyncio
 import io
 import math
 import urllib.request
-
+import requests
+from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import GetStickerSetRequest
@@ -21,6 +22,8 @@ from telethon.tl.types import (
 
 from userbot import CMD_HELP, bot
 from userbot.events import register
+
+combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 PACK_FULL = "Whoa! That's probably enough stickers for one pack, give it a break. \
 A pack can't have more than 120 stickers at the moment."
@@ -315,6 +318,28 @@ async def get_pack_info(event):
     )
 
     await event.edit(OUTPUT)
+
+@register(outgoing=True, pattern=r"^\.stickers ?(.*)")
+async def cb_sticker(event):
+    split = event.pattern_match.group(1)
+    if not split:
+        await event.edit("`Provide some name to search for pack.`")
+        return
+
+    text = requests.get(combot_stickers_url + split).text
+    soup = bs(text, "lxml")
+    results = soup.find_all("a", {"class": "sticker-pack__btn"})
+    titles = soup.find_all("div", "sticker-pack__title")
+
+    if not results:
+        await event.edit("No results found :(.")
+        return
+    reply = f"Stickers for *{split}*:"
+    for result, title in zip(results, titles):
+        link = result["href"]
+        reply += f"\nâ¢ [{title.get_text()}]({link})"
+
+    await event.edit(reply)
 
 
 @register(outgoing=True, pattern="^.getsticker$")
