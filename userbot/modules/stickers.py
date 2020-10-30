@@ -340,7 +340,7 @@ async def cb_sticker(event):
         await event.edit("No results found :(.")
         return
         sticker_pack += f"\n• ID: {id_}\n[{title_}]({link_})"
-await event.edit(sticker_pack)
+    await event.edit(sticker_pack)
 
 @register(outgoing=True, pattern="^.getsticker$")
 async def sticker_to_png(sticker):
