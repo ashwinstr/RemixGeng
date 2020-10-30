@@ -323,26 +323,24 @@ async def get_pack_info(event):
 
 @register(outgoing=True, pattern=r"^\.stickers ?(.*)")
 async def cb_sticker(event):
-    split = event.pattern_match.group(1)
-    if not split:
+    query_ = event.pattern_match.group(1)
+    if not query_:
         await event.edit("`Provide some name to search for pack.`")
         return
 
     text = await AioHttp.get_text(f"https://combot.org/telegram/stickers?q={query_}")
     soup = bs(text, "lxml")
-    results = soup.find_all("div", {"class": "sticker-packheader"})
-    title_ = (pack.find("div", {"class": "sticker-packtitle"})).text
-
+    results = soup.find_all("div", {'class': "sticker-pack__header"})
+    for pack in results:
+    if pack.button:
+        title_ = (pack.find("div", {'class': "sticker-pack__title"})).text
+        link_ = (pack.a).get('href')
+        id_ = (pack.button).get('data-popup')
     if not results:
         await event.edit("No results found :(.")
         return
-    reply = f"Sticker Packs For{split}:"
-    for result, title in zip(results, titles):
-        link_ = (pack.a).get("href")
-        id_ = (pack.button).get("data-popup")
-        reply += f"\n• ID: {id_}\n[{title_}]({link_})"
-    await event.edit(reply)
-
+        sticker_pack += f"\n• ID: {id_}\n[{title_}]({link_})"
+await event.edit(sticker_pack)
 
 @register(outgoing=True, pattern="^.getsticker$")
 async def sticker_to_png(sticker):
