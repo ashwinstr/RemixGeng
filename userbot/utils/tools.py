@@ -12,7 +12,6 @@ from os.path import basename
 from typing import Optional
 from typing import Tuple
 
-<<<<<<< HEAD
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.tlobject import TLObject
 from telethon.tl.types import ChannelParticipantAdmin
@@ -22,17 +21,6 @@ from telethon.tl.types import MessageEntityPre
 from userbot import bot
 from userbot import LOGS
 
-=======
-from telethon import errors
-from telethon.tl import types
-from telethon.utils import get_display_name
-from telethon import events
-from telethon.tl.tlobject import TLObject
-from telethon.tl.functions.messages import GetPeerDialogsRequest
-from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator, DocumentAttributeFilename, MessageEntityPre
-from telethon.utils import add_surrogate
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
@@ -122,50 +110,16 @@ async def take_screen_shot(video_file: str, duration: int,
         LOGS.error(err)
     return thumb_image_path if os.path.exists(thumb_image_path) else None
 
-<<<<<<< HEAD
 
-=======
-async def check_media(reply_message):
-    if reply_message and reply_message.media:
-        if reply_message.photo:
-            data = reply_message.photo
-        elif reply_message.document:
-            if (
-                DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
-                in reply_message.media.document.attributes
-            ):
-                return False
-            if (
-                reply_message.gif
-                or reply_message.video
-                or reply_message.audio
-                or reply_message.voice
-            ):
-                return False
-            data = reply_message.media.document
-        else:
-            return False
-    else:
-        return False
-
-    if not data or data is None:
-        return False
-    else:
-        return data
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 def parse_pre(text):
     text = text.strip()
     return (
         text,
-<<<<<<< HEAD
         [
             MessageEntityPre(offset=0,
                              length=len(add_surrogate(text)),
                              language="")
         ],
-=======
-        [MessageEntityPre(offset=0, length=len(add_surrogate(text)), language='')]
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     )
 
 
@@ -180,7 +134,6 @@ def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
 
     if isinstance(obj, dict):
         if not obj:
-<<<<<<< HEAD
             return "dict:"
         items = obj.items()
         has_items = len(items) > 1
@@ -191,37 +144,16 @@ def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
             indent += 2
         for k, v in items:
             if k == "_" or v is None:
-=======
-            return 'dict:'
-        items = obj.items()
-        has_items = len(items) > 1
-        has_multiple_items = len(items) > 2
-        result.append(obj.get('_', 'dict') + (':' if has_items else ''))
-        if has_multiple_items:
-            result.append('\n')
-            indent += 2
-        for k, v in items:
-            if k == '_' or v is None:
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                 continue
             formatted = yaml_format(v, indent)
             if not formatted.strip():
                 continue
-<<<<<<< HEAD
             result.append(" " * (indent if has_multiple_items else 1))
             result.append(f"{k}:")
             if not formatted[0].isspace():
                 result.append(" ")
             result.append(f"{formatted}")
             result.append("\n")
-=======
-            result.append(' ' * (indent if has_multiple_items else 1))
-            result.append(f'{k}:')
-            if not formatted[0].isspace():
-                result.append(' ')
-            result.append(f'{formatted}')
-            result.append('\n')
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         if has_items:
             result.pop()
         if has_multiple_items:
@@ -230,7 +162,6 @@ def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
         # truncate long strings and display elipsis
         result = repr(obj[:max_str_len])
         if len(obj) > max_str_len:
-<<<<<<< HEAD
             result += "…"
         return result
     elif isinstance(obj, bytes):
@@ -249,34 +180,9 @@ def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
         for x in obj:
             result.append(f"{' ' * indent}- {yaml_format(x, indent + 2)}")
             result.append("\n")
-=======
-            result += '…'
-        return result
-    elif isinstance(obj, bytes):
-        # repr() bytes if it's printable, hex like "FF EE BB" otherwise
-        if all(0x20 <= c < 0x7f for c in obj):
-            return repr(obj)
-        else:
-            return ('<…>' if len(obj) > max_byte_len else
-                    ' '.join(f'{b:02X}' for b in obj))
-    elif isinstance(obj, datetime.datetime):
-        # ISO-8601 without timezone offset (telethon dates are always UTC)
-        return obj.strftime('%Y-%m-%d %H:%M:%S')
-    elif hasattr(obj, '__iter__'):
-        # display iterables one after another at the base indentation level
-        result.append('\n')
-        indent += 2
-        for x in obj:
-            result.append(f"{' ' * indent}- {yaml_format(x, indent + 2)}")
-            result.append('\n')
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         result.pop()
         indent -= 2
     else:
         return repr(obj)
 
-<<<<<<< HEAD
     return "".join(result)
-=======
-    return ''.join(result)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
