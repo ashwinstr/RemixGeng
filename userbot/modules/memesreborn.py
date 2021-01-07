@@ -20,7 +20,6 @@ from userbot.events import register
 # ================= CONSTANT =================
 
 RAPE_STRINGS = [
-<<<<<<< HEAD
     "__Rape Done Drink The Cum__",
     "__EK baat yaad rkhio, Chut ka Chakkar matlab maut se takkar__",
     "__The user has been successfully raped__",
@@ -32,19 +31,6 @@ RAPE_STRINGS = [
     "__Don't rape too much bossdk, else problem....__",
     "__Tu sasti rendi hai Sabko pta hai😂__",
     "__Lodu Andha hai kya Yaha tera rape ho raha hai aur tu abhi tak yahi gaand mara raha hai lulz__",
-=======
-    "`Rape Done Drink The Cum`",
-    "`EK baat yaad rkhio, Chut ka Chakkar matlab maut se takkar`",
-    "`The user has been successfully raped`",
-    "`Dekho Bhaiyya esa hai! Izzat bachailo apni warna Gaand maar lenge tumhari`",
-    "`Relax your Rear, ders nothing to fear,The Rape train is finally here`",
-    "`Rape coming... Raped! haha 😆`",
-    "`Kitni baar Rape krvyega mujhse?`",
-    "`Tu Randi hai Sabko pta hai😂`",
-    "`Don't rape too much bossdk, else problem....`",
-    "`Tu sasti rendi hai Sabko pta hai😂`",
-    "`Lodu Andha hai kya Yaha tera rape ho raha hai aur tu abhi tak yahi gaand mara raha hai lulz`",
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 ]
 
 ABUSE_STRINGS = [
@@ -245,7 +231,6 @@ async def whoizme(e):
         await asyncio.sleep(0.3)
         await e.edit("Nikal lavde pehli fursat me nikal 🤬")
 
-<<<<<<< HEAD
 
 @register(outgoing=True, pattern="^.upro$")
 async def whoizme(e):
@@ -267,8 +252,6 @@ async def whoizme(e):
         await e.edit("EVERyBOdy iZ PrO UNtIL U ArRivE 🔥")
 
 
-=======
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 @register(outgoing=True, pattern=r"^\.(?:penis|dick)\s?(.)?")
 async def emoji_penis(titit):
     emoji = titit.pattern_match.group(1)
@@ -313,7 +296,6 @@ async def fcmd(e):
             out += (n * c) + "\n"
         await e.edit(html.escape(out))
 
-<<<<<<< HEAD
 
 @register(outgoing=True, pattern="^.iff$")
 async def pressf(f):
@@ -338,8 +320,6 @@ async def pressf(f):
         await f.edit("`" + out + "`")
 
 
-=======
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 @register(outgoing=True, pattern="^.paw$")
 async def paw(pawed):
     if not pawed.text[0].isalpha() and pawed.text[0] not in ("/", "#", "@", "!"):
@@ -354,7 +334,6 @@ async def retard(event):
             "__Reply to someone so i can check how retarded they are!__"
         )
     sender = replied.sender
-<<<<<<< HEAD
     reply = f"__[{sender.first_name}](tg://user?id={sender.id}) is {randint(0, 101)}% retarded!__"
     await event.edit(reply, link_preview=False)
 
@@ -367,11 +346,6 @@ async def Oof(woof):
         await woof.edit(t)
 
 
-=======
-    reply = f"[{sender.first_name}](tg://user?id={sender.id}) __is {randint(0, 101)}% retarded!__"
-    await event.edit(reply, link_preview=False)
-
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 @register(outgoing=True, pattern="^.tf$")
 async def tf(focc):
     if not focc.text[0].isalpha() and focc.text[0] not in ("/", "#", "@", "!"):
@@ -408,33 +382,14 @@ async def _(event):
     else:
         await event.edit("Syntax: `.color <color_code>` example : `.color #ff0000`")
 
-<<<<<<< HEAD
 
 CMD_HELP.update(
     {
         "memesreborn": "`.fuk`\
-=======
-CMD_HELP.update({
-    "memesreborn":
-    "`.fuk`\
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 \nUsage: Greet Evrii Nibba in da house.\
 \n\n`.iwi`\
 \nUsage: gib text and see magik.\
 \n\n`.rape .thanos .chu .abuse .abusehard`\
-<<<<<<< HEAD
 \nUsage: See it yourself nibba🌚."
     }
 )
-=======
-\nUsage: See it yourself nibba🌚.\
-\n\n`.paw`\
-\nUsage: try it.\
-\n\n`.dick` or `.penis`\
-\nUsage: nonsense\
-\n\n`.retrard`\
-\nUsage: Gibs retrad %\
-\n\n`.color` code\
-\nUsage: generates color."
-})
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0

@@ -8,17 +8,10 @@
 import asyncio
 import io
 import math
-<<<<<<< HEAD
 import random
 import urllib.request
 from os import remove
 
-=======
-import asyncio
-import random
-import urllib.request
-from os import remove
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
@@ -33,25 +26,12 @@ from telethon.tl.types import (
 from userbot import CMD_HELP, bot
 from userbot.events import register
 
-<<<<<<< HEAD
 KANGING_STR = [
     "__Kangin...__",
 ]
-=======
-combot_stickers_url = "https://combot.org/telegram/stickers?q="
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
-KANGING_STR = [
-    "Stealing this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",]
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^\.kang")
-=======
-@register(outgoing=True, pattern="^.kang")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
     user = await bot.get_me()
@@ -65,19 +45,11 @@ async def kang(args):
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-<<<<<<< HEAD
             await args.edit(f"{random.choice(KANGING_STR)}")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
             await args.edit(f"{random.choice(KANGING_STR)}")
-=======
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
-            photo = io.BytesIO()
-            photo = await bot.download_media(message.photo, photo)
-        elif "image" in message.media.document.mime_type.split("/"):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (
@@ -88,11 +60,7 @@ async def kang(args):
                 if emoji != "":
                     emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
-<<<<<<< HEAD
             await args.edit(f"{random.choice(KANGING_STR)}")
-=======
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             await bot.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
@@ -104,26 +72,14 @@ async def kang(args):
             is_anim = True
             photo = 1
         else:
-<<<<<<< HEAD
             return await args.edit("__Unsupported file!__")
     else:
         return await args.edit("__I can't kang that...__")
-=======
-            await args.edit("`Unsupported File!`")
-            return
-    else:
-        await args.edit("`Couldn't download sticker! Make sure you send a proper sticker/photo.`")
-        return
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
     if photo:
         splat = args.text.split()
         if not emojibypass:
-<<<<<<< HEAD
             emoji = "🤔"
-=======
-            emoji = "😃"
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         pack = 1
         if len(splat) == 3:
             pack = splat[2]  # User sent both
@@ -139,11 +95,7 @@ async def kang(args):
                 emoji = splat[1]
 
         packname = f"a{user.id}_by_{user.username}_{pack}"
-<<<<<<< HEAD
         packnick = f"@{user.username}'s stickers vol.{pack}"
-=======
-        packnick = f"@{user.username}'s remix pack Vol.{pack}"
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         cmd = "/newpack"
         file = io.BytesIO()
 
@@ -175,7 +127,6 @@ async def kang(args):
                 while "120" in x.text:
                     pack += 1
                     packname = f"a{user.id}_by_{user.username}_{pack}"
-<<<<<<< HEAD
                     packnick = f"@{user.username}'s kang pack Vol.{pack}"
                     await args.edit(
                         "`Switching to pack "
@@ -237,72 +188,6 @@ async def kang(args):
                     return await args.edit(
                         "__Failed to add sticker, use **@Stickers** bot to add the sticker manually.__"
                     )
-=======
-                    packnick = f"@{user.username}'s remix pack Vol.{pack}"
-                    await args.edit(
-                        "`Switching to Pack "
-                        + str(pack)
-                        + " due to insufficient space`"
-                    )
-                    await conv.send_message(packname)
-                    x = await conv.get_response()
-                    if x.text == "Invalid pack selected.":
-                        await conv.send_message(cmd)
-                        await conv.get_response()
-                        # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        await conv.send_message(packnick)
-                        await conv.get_response()
-                        # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        if is_anim:
-                            await conv.send_file("AnimatedSticker.tgs")
-                            remove("AnimatedSticker.tgs")
-                        else:
-                            file.seek(0)
-                            await conv.send_file(file, force_document=True)
-                        await conv.get_response()
-                        await conv.send_message(emoji)
-                        # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        await conv.get_response()
-                        await conv.send_message("/publish")
-                        if is_anim:
-                            await conv.get_response()
-                            await conv.send_message(f"<{packnick}>")
-                        # Ensure user doesn't get spamming notifications
-                        await conv.get_response()
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        await conv.send_message("/skip")
-                        # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        await conv.get_response()
-                        await conv.send_message(packname)
-                        # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        await conv.get_response()
-                        # Ensure user doesn't get spamming notifications
-                        await bot.send_read_acknowledge(conv.chat_id)
-                        await args.edit(
-                            f"`Sticker added in a Different Pack !\
-                            \nThis Pack is Newly created!`\
-                            \nYour pack can be found [here](t.me/addstickers/{packname})",
-                            parse_mode="md",
-                        )
-                        return
-                if is_anim:
-                    await conv.send_file("AnimatedSticker.tgs")
-                    remove("AnimatedSticker.tgs")
-                else:
-                    file.seek(0)
-                    await conv.send_file(file, force_document=True)
-                rsp = await conv.get_response()
-                if "Sorry, the file type is invalid." in rsp.text:
-                    await args.edit(
-                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
-                    )
-                    return
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                 await conv.send_message(emoji)
                 # Ensure user doesn't get spamming notifications
                 await bot.send_read_acknowledge(conv.chat_id)
@@ -312,11 +197,7 @@ async def kang(args):
                 # Ensure user doesn't get spamming notifications
                 await bot.send_read_acknowledge(conv.chat_id)
         else:
-<<<<<<< HEAD
             await args.edit("Brewing a new pack...")
-=======
-            await args.edit("`Brewing a new Pack...`")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             async with bot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
@@ -325,10 +206,7 @@ async def kang(args):
                 await conv.send_message(packnick)
                 await conv.get_response()
                 # Ensure user doesn't get spamming notifications
-<<<<<<< HEAD
                 await args.edit("A new pack has been brewed. Adding this sticker...")
-=======
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                 await bot.send_read_acknowledge(conv.chat_id)
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
@@ -338,16 +216,9 @@ async def kang(args):
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
-<<<<<<< HEAD
                     return await args.edit(
                         "__Failed to add sticker, use **@Stickers** bot to add the sticker manually.__"
                     )
-=======
-                    await args.edit(
-                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
-                    )
-                    return
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                 await conv.send_message(emoji)
                 # Ensure user doesn't get spamming notifications
                 await bot.send_read_acknowledge(conv.chat_id)
@@ -371,18 +242,10 @@ async def kang(args):
                 await bot.send_read_acknowledge(conv.chat_id)
 
         await args.edit(
-<<<<<<< HEAD
             f"**Sticker** [Kanged](t.me/addstickers/{packname})!!",
             parse_mode="md",
         )
         await asyncio.sleep(25)
-=======
-            f"`Sticker kanged successfully!`\
-            \nPack can be found [here](t.me/addstickers/{packname})",
-            parse_mode="md",
-        )
-        await asyncio.sleep(7.5)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         await args.delete()
 
 
@@ -453,34 +316,8 @@ async def get_pack_info(event):
 
     await event.edit(OUTPUT)
 
-<<<<<<< HEAD
 
 @register(outgoing=True, pattern=r"^\.getsticker$")
-=======
-@register(outgoing=True, pattern=r"^\.stickers ?(.*)")
-async def cb_sticker(event):
-    split = event.pattern_match.group(1)
-    if not split:
-        await event.edit("`Provide some name to search for pack.`")
-        return
-    await event.edit("`Searching sticker packs`")
-    text = requests.get(combot_stickers_url + split).text
-    soup = bs(text, "lxml")
-    results = soup.find_all("div", {'class': "sticker-pack__header"})
-    if not results:
-        await event.edit("`No results found :(.`")
-        return
-    reply = f"**Sticker packs found for {split} are :**"
-    for pack in results:
-        if pack.button:
-            packtitle = (pack.find("div", "sticker-pack__title")).get_text()
-            packlink = (pack.a).get('href')
-            packid = (pack.button).get('data-popup')
-            reply += f"\n **• ID: **`{packid}`\n [{packtitle}]({packlink})"
-    await event.edit(reply)
-
-@register(outgoing=True, pattern="^.getsticker$")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 async def sticker_to_png(sticker):
     if not sticker.is_reply:
         await sticker.edit("`Reply to a sticker!`")
@@ -509,7 +346,6 @@ async def sticker_to_png(sticker):
     return
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^\.stickers ?(.*)")
 async def cb_sticker(event):
     query = event.pattern_match.group(1)
@@ -533,11 +369,6 @@ async def cb_sticker(event):
 CMD_HELP.update(
     {
         "stickers": "`.kang`\
-=======
-CMD_HELP.update(
-    {
-        "stickers": ".kang\
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 \nUsage: Reply .kang to a sticker or an image to kang it to your userbot pack.\
 \n\n`.kang` [emoji('s)]\
 \nUsage: Works just like .kang but uses the emoji('s) you picked.\
@@ -548,15 +379,10 @@ CMD_HELP.update(
 \n\n`.stkrinfo`\
 \nUsage: Gets info about the sticker pack.\
 \n\n`.getsticker`\
-\nUsage: reply to a sticker to get 'PNG' file of sticker.\
+\nUsage:reply to a sticker to get 'PNG' file of sticker.\
 \n\n`.cs <text>`\
 \nUsage: Type .cs text and generate rgb sticker.\
 \n\n`.stickers` <name of user or pack>\
-<<<<<<< HEAD
 \nUsage: Searches for sticker packs."
     }
 )
-=======
-\nUsage: Fetch sticker Packs according to your query."
-})
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0

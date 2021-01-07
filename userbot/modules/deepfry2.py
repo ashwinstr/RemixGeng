@@ -17,7 +17,6 @@
 import io
 import os
 from random import randint, uniform
-<<<<<<< HEAD
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -28,16 +27,6 @@ from userbot import bot
 from userbot.events import register
 
 
-=======
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from userbot import bot
-from PIL import Image, ImageEnhance, ImageOps
-from telethon.tl.types import DocumentAttributeFilename
-from userbot.events import register
-
-
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 @register(pattern=r"^\.deepfry(?: |$)(.*)", outgoing=True)
 async def deepfryer(event):
     try:

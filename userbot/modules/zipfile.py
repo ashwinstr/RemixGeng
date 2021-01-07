@@ -4,13 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 # Port from UniBorg to Userbot by yincen17
-<<<<<<< HEAD
 """ `UNZIPPER`  Coded by @By_Azade code rewritten my SnapDragon7410 """
-=======
-
-""" `UNZIPPER`  Coded by @By_Azade code rewritten my SnapDragon7410 """
-
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 import asyncio
 import os
 import time
@@ -23,23 +17,7 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, ZIP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import register
-<<<<<<< HEAD
-=======
-from datetime import date
-import time
-import os
-from userbot import TEMP_DOWNLOAD_DIRECTORY, ZIP_DOWNLOAD_DIRECTORY, bot, CMD_HELP
-from telethon.tl.types import DocumentAttributeVideo
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 from userbot.utils import progress
-from datetime import datetime
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-
-thumb_image_path = TEMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
-extracted = TEMP_DOWNLOAD_DIRECTORY + "extracted/"
-if not os.path.isdir(extracted):
-    os.makedirs(extracted)
 
 thumb_image_path = TEMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = TEMP_DOWNLOAD_DIRECTORY + "extracted/"
@@ -116,17 +94,12 @@ async def _(event):
             downloaded_file_name = await bot.download_media(
                 reply_message,
                 TEMP_DOWNLOAD_DIRECTORY,
-<<<<<<< HEAD
-=======
-
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
         else:
             end = datetime.now()
             ms = (end - start).seconds
-<<<<<<< HEAD
             await mone.edit(
                 "Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms)
             )
@@ -135,14 +108,6 @@ async def _(event):
             zip_ref.extractall(extracted)
         filename = sorted(get_lst_of_files(extracted, []))
         # filename = filename + "/"
-=======
-            await mone.edit("Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms))
-
-        with zipfile.ZipFile(downloaded_file_name, 'r') as zip_ref:
-            zip_ref.extractall(extracted)
-        filename = sorted(get_lst_of_files(extracted, []))
-        #filename = filename + "/"
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         await event.edit("Unzipping now")
         # r=root, d=directories, f = files
         for single_file in filename:
@@ -158,16 +123,9 @@ async def _(event):
                     width = 0
                     height = 0
                     if metadata.has("duration"):
-<<<<<<< HEAD
                         duration = metadata.get("duration").seconds
                     if os.path.exists(thumb_image_path):
                         metadata = extractMetadata(createParser(thumb_image_path))
-=======
-                        duration = metadata.get('duration').seconds
-                    if os.path.exists(thumb_image_path):
-                        metadata = extractMetadata(
-                            createParser(thumb_image_path))
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                         if metadata.has("width"):
                             width = metadata.get("width")
                         if metadata.has("height"):
@@ -178,11 +136,7 @@ async def _(event):
                             w=width,
                             h=height,
                             round_message=False,
-<<<<<<< HEAD
                             supports_streaming=True,
-=======
-                            supports_streaming=True
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                         )
                     ]
                 try:
@@ -192,12 +146,8 @@ async def _(event):
                         caption=f"UnZipped `{caption_rts}`",
                         force_document=force_document,
                         supports_streaming=supports_streaming,
-<<<<<<< HEAD
                         allow_cache=False,
                         reply_to=event.message.id,
-=======
-                        allow_cache=False, reply_to=event.message.id,
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                         attributes=document_attributes,
                         # progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                         #     progress(d, t, event, c_time, "trying to upload")
@@ -207,22 +157,15 @@ async def _(event):
                     await bot.send_message(
                         event.chat_id,
                         "{} caused `{}`".format(caption_rts, str(e)),
-<<<<<<< HEAD
                         reply_to=event.message.id,
-=======
-                        reply_to=event.message.id
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                     )
                     # some media were having some issues
                     continue
                 os.remove(single_file)
         os.remove(downloaded_file_name)
-<<<<<<< HEAD
         await event.edit("`Done!!`")
         await asyncio.sleep(7)
         await event.delete()
-=======
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 
 @register(outgoing=True, pattern=r"^\.addzip(?: |$)(.*)")
@@ -312,15 +255,9 @@ def zipdir(path, ziph):
             os.remove(os.path.join(root, file))
 
 
-<<<<<<< HEAD
 CMD_HELP.update(
     {
         "zipfile": "`.compress` **[optional: <reply to file>]**\
-=======
-CMD_HELP.update({
-    "zipfile":
-        "`.compress` **[optional: <reply to file>]**\
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             \nUsage: make files to zip.\
             \n`.unzip` **<reply to zipped file>**\
             \nUsage: unzip the zipped files.\

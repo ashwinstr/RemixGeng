@@ -1,7 +1,6 @@
 # imported from catuserbot by @RoyalBoyPriyanshu and @DeletedUser420 also
 # thanks  @AbhinavShinde
 """  Some Modules Imported by @Nitesh_231 :) & Again @heyworld roks *_* """
-<<<<<<< HEAD
 import asyncio
 import os
 import re
@@ -14,22 +13,6 @@ from validators.url import url
 from wget import download
 
 from userbot import TEMP_DOWNLOAD_DIRECTORY, bot
-=======
-import os
-import re
-import asyncio
-import os
-from PIL import Image, ImageDraw, ImageFont
-from wget import download
-import requests
-from html_telegraph_poster.upload_images import upload_image
-from telegraph import exceptions
-from telegraph import upload_file
-from validators.url import url
-
-from userbot import bot, CMD_HELP
-from userbot import TEMP_DOWNLOAD_DIRECTORY
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 from userbot.events import register
 
 EMOJI_PATTERN = re.compile(
@@ -49,7 +32,6 @@ EMOJI_PATTERN = re.compile(
 )
 
 
-
 def convert_toimage(image):
     img = Image.open(image)
     if img.mode != "RGB":
@@ -65,12 +47,7 @@ def deEmojify(inputString: str) -> str:
 
 
 async def threats(text):
-<<<<<<< HEAD
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=threats&url={text}").json()
-=======
-    r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=threats&url={text}").json()
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     sandy = r.get("message")
     caturl = url(sandy)
     if not caturl:
@@ -85,12 +62,7 @@ async def threats(text):
 
 
 async def trash(text):
-<<<<<<< HEAD
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=trash&url={text}").json()
-=======
-    r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=trash&url={text}").json()
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     sandy = r.get("message")
     caturl = url(sandy)
     if not caturl:
@@ -137,7 +109,6 @@ async def phss(uplded, input, name):
 
 
 async def trumptweet(text):
-<<<<<<< HEAD
     r = requests.get(
         f"https://nekobot.xyz/api/imagegen?type=trumptweet&text={text}"
     ).json()
@@ -184,53 +155,6 @@ async def kannagen(text):
 
 async def moditweet(text):
     r = requests.get(
-=======
-    r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=trumptweet&text={text}").json(
-    )
-    geng = r.get("message")
-    kapak = url(geng)
-    if not kapak:
-        return "check syntax once more"
-    with open("gpx.png", "wb") as f:
-        f.write(requests.get(geng).content)
-    img = Image.open("gpx.png").convert("RGB")
-    img.save("gpx.jpg", "jpeg")
-    return "gpx.jpg"
-
-
-async def changemymind(text):
-    r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=changemymind&text={text}"
-    ).json()
-    geng = r.get("message")
-    kapak = url(geng)
-    if not kapak:
-        return "check syntax once more"
-    with open("gpx.png", "wb") as f:
-        f.write(requests.get(geng).content)
-    img = Image.open("gpx.png").convert("RGB")
-    img.save("gpx.jpg", "jpeg")
-    return "gpx.jpg"
-
-
-async def kannagen(text):
-    r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=kannagen&text={text}").json()
-    geng = r.get("message")
-    kapak = url(geng)
-    if not kapak:
-        return "check syntax once more"
-    with open("gpx.png", "wb") as f:
-        f.write(requests.get(geng).content)
-    img = Image.open("gpx.png").convert("RGB")
-    img.save("gpx.webp", "webp")
-    return "gpx.webp"
-
-
-async def moditweet(text):
-    r = requests.get(
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
     ).json()
     sandy = r.get("message")
@@ -262,11 +186,7 @@ async def tweets(text1, text2):
 async def get_user_from_event(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-<<<<<<< HEAD
         user_obj = await event.client.get_entity(previous_message.sender_id)
-=======
-        user_obj = await event.client.get_entity(previous_message.from_id)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     return user_obj
 
 
@@ -372,18 +292,15 @@ async def tweet(event):
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await event.edit(
-                    "`What should i tweet? Give your username and tweet!`")
+                await event.edit("`What should i tweet? Give your username and tweet!`")
                 return
         else:
-            await event.edit(
-                "What should i tweet? Give your username and tweet!`")
+            await event.edit("What should i tweet? Give your username and tweet!`")
             return
     if "." in text:
         username, text = text.split(".")
     else:
-        await event.edit("`What should i tweet? Give your username and tweet!`"
-                         )
+        await event.edit("`What should i tweet? Give your username and tweet!`")
     await event.edit(f"`Requesting {username} to tweet...`")
     text = deEmojify(text)
     img = await tweets(text, username)
@@ -405,24 +322,15 @@ async def nekobot(event):
     else:
         await event.edit("reply to a supported media file")
         return
-<<<<<<< HEAD
     download_location = await bot.download_media(replied, TEMP_DOWNLOAD_DIRECTORY)
-=======
-    download_location = await bot.download_media(replied,
-                                                 TEMP_DOWNLOAD_DIRECTORY)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
             await event.edit(
-<<<<<<< HEAD
                 "the replied file size is not supported it must me below 5 mb"
             )
-=======
-                "the replied file size is not supported it must me below 5 mb")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             os.remove(download_location)
             return
         await event.edit("generating image..")
@@ -456,24 +364,15 @@ async def nekobot(event):
     else:
         await event.edit("reply to a supported media file")
         return
-<<<<<<< HEAD
     download_location = await bot.download_media(replied, TEMP_DOWNLOAD_DIRECTORY)
-=======
-    download_location = await bot.download_media(replied,
-                                                 TEMP_DOWNLOAD_DIRECTORY)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
             await event.edit(
-<<<<<<< HEAD
                 "the replied file size is not supported it must me below 5 mb"
             )
-=======
-                "the replied file size is not supported it must me below 5 mb")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             os.remove(download_location)
             return
         await event.edit("generating image..")
@@ -516,19 +415,13 @@ async def nekobot(e):
     else:
         await e.edit("reply to a supported media file")
         return
-<<<<<<< HEAD
     download_location = await bot.download_media(replied, TEMP_DOWNLOAD_DIRECTORY)
-=======
-    download_location = await bot.download_media(replied,
-                                                 TEMP_DOWNLOAD_DIRECTORY)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await e.edit(
-                "the replied file size is not supported it must me below 5 mb")
+            await e.edit("the replied file size is not supported it must me below 5 mb")
             os.remove(download_location)
             return
         await e.edit("generating image..")
@@ -547,7 +440,6 @@ async def nekobot(e):
     file = await trap(text1, text2, file)
     await e.delete()
     await bot.send_file(e.chat_id, file, reply_to=replied)
-<<<<<<< HEAD
 
 
 @register(outgoing=True, pattern=r"^\.ph(?: |$)(.*)")
@@ -598,17 +490,12 @@ async def phcomment(event):
     await purge()
 
 
-=======
-
-# Ported by @AshSTR
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 @register(outgoing=True, pattern="^.fgs ((.*) ; (.*))")
 async def FakeGoogleSearch(event):
     """ Get a user-customised google search meme! """
     input_str = event.pattern_match.group(1)
     if input_str is None:
         await event.edit("No input found!", del_in=5)
-<<<<<<< HEAD
         return
     if ";" in input_str:
         search, result = input_str.split(";", 1)
@@ -626,100 +513,13 @@ async def FakeGoogleSearch(event):
     black = (0, 0, 0)
     font1 = ImageFont.truetype("resources/CoCoBiker-Regular.ttf", 20)
     font2 = ImageFont.truetype("resources/OutrunFuture-Regular.ttf", 23)
-=======
-        return
-    if ";" in input_str:
-        search, result = input_str.split(";", 1)
-    else:
-        await event.edit("Invalid Input! Check help for more info!", del_in=5)
-        return
-
-    await event.edit('Connecting to `https://www.google.com/` ...')
-    await asyncio.sleep(2)
-    img='https://i.imgur.com/wNFr5X2.jpg'
-    r=download(img)
-    photo=Image.open(r)
-    drawing=ImageDraw.Draw(photo)
-    blue=(0,0,255)
-    black=(0,0,0)
-    font1=ImageFont.truetype("userbot/utils/styles/ProductSans-BoldItalic.ttf",20)
-    font2=ImageFont.truetype("userbot/utils/styles/ProductSans-Light.ttf",23)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     drawing.text((450, 258), result, fill=blue, font=font1)
     drawing.text((270, 37), search, fill=black, font=font2)
     photo.save("downloads/test.jpg")
     reply = event.pattern_match.group(2)
-<<<<<<< HEAD
     await event.delete()
     reply_id = event.pattern_match.group(3) if reply else None
     await event.client.send_file(
         event.chat_id, "downloads/test.jpg", reply_to_message_id=reply_id
     )
     os.remove("downloads/test.jpg")
-=======
-    await event.delete()
-    reply_id = event.pattern_match.group(3) if reply else None
-    await event.client.send_file(
-        event.chat_id,
-        'downloads/test.jpg',
-        reply_to_message_id=reply_id)
-    os.remove('downloads/test.jpg')
-
-@register(outgoing=True, pattern=r"^\.ph(?: |$)(.*)")
-async def phcomment(event):
-    try:
-        await event.edit("`Processing..`")
-        text = event.pattern_match.group(1)
-        reply = await event.get_reply_message()
-        if reply:
-            user = await get_user_from_event(event)
-            if user.last_name:
-                name = user.first_name + " " + user.last_name
-            else:
-                name = user.first_name
-            text = text if text else str(reply.message)
-        elif text:
-            user = await bot.get_me()
-            if user.last_name:
-                name = user.first_name + " " + user.last_name
-            else:
-                name = user.first_name
-            text = text
-        else:
-            return await event.edit("`Give text..`")
-        try:
-            photo = await event.client.download_profile_photo(
-                user.id,
-                str(user.id) + ".png",
-                download_big=False,
-            )
-            uplded = upload_image(photo)
-        except BaseException:
-            uplded = "https://telegra.ph/file/7d110cd944d54f72bcc84.jpg"
-    except BaseException as e:
-        await purge()
-        return await event.edit(f"`Error: {e}`")
-    img = await phss(uplded, text, name)
-    try:
-        await event.client.send_file(
-            event.chat_id,
-            img,
-            reply_to=event.reply_to_msg_id,
-        )
-    except BaseException:
-        await purge()
-        return await event.edit("`Reply message has no text!`")
-    await event.delete()
-    await purge()
-
-CMD_HELP.update({
-    "imgmemes":
-    "`.fgs`\
-\nUsage: Get a user-customised google search meme!\
-\n`.fgs` [UpperText] ; [LowerText]\
-\n\n<`.modi` or `.trump` or `.cmm` or `.kanna`> <text>\
-\nUsage: Just for Fun.\
-\n\n<`.ph` or `.threat` or `.trash` or `.trap` >\
-\nUsage: Reply to image or sticker and see magik."
-})
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0

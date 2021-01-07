@@ -1,29 +1,19 @@
-# Copyright (C) 2020 The Raphielscape Company LLC.
+# Copyright (C) 2019 The Raphielscape Company LLC.
 #
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 #
 """  Port From UniBorg to UserBot by @MoveAngel """
 
-<<<<<<< HEAD
 import os
-=======
-import telethon
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 from asyncio.exceptions import TimeoutError
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-<<<<<<< HEAD
 
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import register
 
-=======
-from userbot import bot, CMD_HELP
-from userbot.events import register
-
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 @register(outgoing=True, pattern=r"^\.q(?: |$)(.*)")
 async def quotess(qotli):
@@ -80,9 +70,5 @@ CMD_HELP.update(
 \nUsage: Enhance ur text to sticker.\
 \n\n`.pch`\
 \nUsage: Better than quotly."
-<<<<<<< HEAD
     }
 )
-=======
-})
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0

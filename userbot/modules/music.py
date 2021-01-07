@@ -2,20 +2,9 @@
 # Port to UserBot by @heyworld
 import asyncio
 import glob
-<<<<<<< HEAD
-=======
-import shutil
-from userbot.events import register
-from userbot import bot, CMD_HELP, GOOGLE_CHROME_BIN, TEMP_DOWNLOAD_DIRECTORY, bot
-from telethon.errors.rpcerrorlist import YouBlockedUserError
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 import os
 import time
-<<<<<<< HEAD
 
-=======
-from asyncio.exceptions import TimeoutError
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from selenium import webdriver
@@ -84,11 +73,7 @@ async def _(event):
     else:
         event = await event.edit("`What I am Supposed to find `")
         return
-<<<<<<< HEAD
     event = await event.edit("`searching for your song....`")
-=======
-    event = await event.edit("`wi8..! I am finding your song....`")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     await catmusic(str(query), "128k", event)
     l = glob.glob("./temp/*.mp3")
     if l:
@@ -129,11 +114,7 @@ async def _(event):
     else:
         event = await event.edit("`What I am Supposed to find `")
         return
-<<<<<<< HEAD
     event = await event.edit("`searching for your song....`")
-=======
-    event = await event.edit("`wi8..! I am finding your song....`")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     await catmusic(str(query), "320k", event)
     l = glob.glob("./temp/*.mp3")
     if l:
@@ -318,7 +299,6 @@ async def DeezLoader(Deezlod):
         await Deezlod.edit("**Initiating Download!**")
     chat = "@DeezLoadBot"
     async with bot.conversation(chat) as conv:
-<<<<<<< HEAD
         try:
             msg_start = await conv.send_message("/start")
             response = await conv.get_response()
@@ -341,28 +321,6 @@ async def DeezLoader(Deezlod):
 CMD_HELP.update(
     {
         "music": "`.spd`<Artist - Song Title>\
-=======
-          try:
-              msg_start = await conv.send_message("/start")
-              response = await conv.get_response()
-              r = await conv.get_response()
-              msg = await conv.send_message(d_link)
-              details = await conv.get_response()
-              song = await conv.get_response()
-              """ - don't spam notif - """
-              await bot.send_read_acknowledge(conv.chat_id)
-          except YouBlockedUserError:
-              await Deezlod.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
-              return
-          await bot.send_file(Deezlod.chat_id, song, caption=details.text)
-          await Deezlod.client.delete_messages(conv.chat_id,
-                                             [msg_start.id, response.id, r.id, msg.id, details.id, song.id])
-          await Deezlod.delete()
-
-CMD_HELP.update({
-        "music":
-        "`.spd`<Artist - Song Title>\
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             \nUsage:For searching songs from Spotify.\
             \n\n`.song` or `.vsong`\
             \nUsage:for downloading music\
