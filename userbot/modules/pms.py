@@ -25,8 +25,10 @@ from userbot import (COUNT_PM, CMD_HELP, BOTLOG, BOTLOG_CHATID, PM_AUTO_BAN,
 from userbot.events import register
 
 # ========================= CONSTANTS ============================
-UNAPPROVED_MSG = (
-    "Hey there! Unfortunately, I don't accept private messages from strangers. Please contact me in a group, or talk to [Paimon](tg://user?id=1486647366)✨🦋. you will be blocked after 3 texts\n\n")
+UNAPPROVED_MSG = (  
+
+    "Hey there! Unfortunately, I don't accept private messages from strangers. Please contact me in a group. you will be blocked if you continue texting.\n\n")
+    
 # =================================================================
 
 NO_PM_LOG_USERS = []
@@ -77,9 +79,9 @@ async def permitpm(event):
 
                 if COUNT_PM[event.chat_id] > 2:
                     await event.respond(
-                        "`ah come on dude i told you that I don't like PM,`\n"
-                        "`you are now blocked😼.`"
-                        "`if you really wanna talk, then text [Paimon](tg://user?id=1486647366)✨🦋\n"
+                       "`I told you I don't like PM,`\n"
+                        "`you are now blocked and reported😼.`"
+                        "`if its really important talk to [Paimon](tg://user?id=1486647366)✨🦋\n"
                     )
 
                     try:
@@ -104,7 +106,7 @@ async def permitpm(event):
                             BOTLOG_CHATID,
                             "[" + name0 + "](tg://user?id=" +
                             str(event.chat_id) + ")" +
-                            " was just another retard",
+                            " was just another retarded nibba",
                         )
 
 
@@ -252,7 +254,7 @@ async def blockpm(block):
     else:
         await block.client(BlockRequest(block.chat_id))
         aname = await block.client.get_entity(block.chat_id)
-        await block.edit("`You've been blocked!`")
+        await block.edit("`You've been blocked 😡!`")
         name0 = str(aname.first_name)
         uid = block.chat_id
 
@@ -277,7 +279,7 @@ async def unblockpm(unblock):
         replied_user = await unblock.client.get_entity(reply.from_id)
         name0 = str(replied_user.first_name)
         await unblock.client(UnblockRequest(replied_user.id))
-        await unblock.edit("`You have been unblocked .`")
+        await unblock.edit("`You have been unblocked 😌.`")
 
     if BOTLOG:
         await unblock.client.send_message(
@@ -301,17 +303,6 @@ async def monito_p_m_s(event):
                 )
             except Exception as e:
                 LOGS.warn(str(e))
-                
-        self_user = await event.client.get_me()
-        if sender.id != self_user.id:
-            return
-        else:
-            if event.chat_id and NC_LOG_P_M_S:
-                    await event.client.send_message(
-                        PM_LOGGR_BOT_API_ID,
-                        "#" +
-                        f"[{chat.first_name}](tg://user?id={chat.id})",
-                    )
                 
 
 @register(pattern="^.nolog(?: |$)(.*)")
@@ -409,13 +400,13 @@ async def endmute(event):
             return await event.edit("Please reply to a user or add their userid into the command to unmute them.")
         chat_id = event.chat_id
         if not is_muted(userid, chat_id):
-            return await event.edit("This user is not muted in this chat")
+            return await event.edit("__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）")
         try:
             unmute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully unmuted that person")
+            await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
 
 @register(incoming=True)
 async def watcher(event):
