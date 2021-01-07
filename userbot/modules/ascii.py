@@ -1,5 +1,9 @@
 # based on https://gist.github.com/wshanshan/c825efca4501a491447056849dd207d6
 # Ported for ProjectAlf by Alfiananda P.A
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 import os
 import random
 
@@ -76,7 +80,11 @@ async def ascii(event):
         await event.delete()
         os.system("rm *.png *.webp *.mp4 *.tgs")
     except BaseException as e:
+<<<<<<< HEAD
         os.system("rm *.png *.webp *.mp4 *.tgs")
+=======
+        os.system("rm *.png *.webp *.mp4 *.png")
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         return await event.edit(str(e))
 
 
@@ -94,7 +102,12 @@ async def asciiart(IMG, color1, color2, bgcolor):
     img = np.sum(np.asarray(img), axis=2)
     img -= img.min()
     img = (1.0 - img / img.max()) ** 2.2 * (chars.size - 1)
+<<<<<<< HEAD
     lines = ("\n".join(("".join(r) for r in chars[img.astype(int)]))).split("\n")
+=======
+    lines = ("\n".join(("".join(r)
+                        for r in chars[img.astype(int)]))).split("\n")
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     nbins = len(lines)
     colorRange = list(Color(color1).range_to(Color(color2), nbins))
     newImg_width = letter_width * widthByLetter
@@ -103,8 +116,15 @@ async def asciiart(IMG, color1, color2, bgcolor):
     draw = ImageDraw.Draw(newImg)
     leftpadding = 0
     y = 0
+<<<<<<< HEAD
     for lineIdx, line in enumerate(lines):
         color = colorRange[lineIdx]
+=======
+    lineIdx = 0
+    for line in lines:
+        color = colorRange[lineIdx]
+        lineIdx += 1
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         draw.text((leftpadding, y), line, color.hex, font=font)
         y += letter_height
     IMG = newImg.save("ascii.png")
@@ -113,10 +133,18 @@ async def asciiart(IMG, color1, color2, bgcolor):
 
 # this is from userge
 async def random_color():
+<<<<<<< HEAD
     return [
         "#" + "".join([random.choice("0123456789ABCDEF") for k in range(6)])
         for i in range(2)
     ]
+=======
+    color = [
+        "#" + "".join([random.choice("0123456789ABCDEF") for k in range(6)])
+        for i in range(2)
+    ]
+    return color
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 
 @register(outgoing=True, pattern=r"^\.asciibg(?: |$)(.*)")
@@ -124,20 +152,36 @@ async def _(event):
     BG = event.pattern_match.group(1)
     if BG.isnumeric():
         return await event.edit("`Please input a color not a number!`")
+<<<<<<< HEAD
     if not BG:
         return await event.edit("`please insert bg of ascii`")
     global bground
     bground = BG
+=======
+    elif BG:
+        global bground
+        bground = BG
+    else:
+        return await event.edit("`please insert bg of ascii`")
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     await event.edit(f"`Successfully set bg of ascii to` **{BG}**")
 
 
 CMD_HELP.update(
     {
+<<<<<<< HEAD
         "ascii": ">`.ascii`\n"
         "Usage: create ascii art from media\n\n"
         ">`.asciis`\n"
         "Usage: same but upload the result as sticker\n\n"
         ">`.asciibg <color>`\n"
+=======
+        "ascii": "`.ascii`\n"
+        "Usage: create ascii art from media\n\n"
+        "`.asciis`\n"
+        "Usage: same but upload the result as sticker\n\n"
+        "`.asciibg <color>`\n"
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
         "Usage: to change background color of this ascii module"
     }
 )

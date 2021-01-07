@@ -96,9 +96,14 @@ async def bot_community(community):
 async def bot_support(wannahelp):
     """ For .support command, just returns the group link. """
     await wannahelp.edit(
+<<<<<<< HEAD
         "Join the OpenUserBot Channel: @PaperPlaneExtended_news \
         \nJoin the OpenUserBot Chat: @PPE_Support"
     )
+=======
+        "Join the oub-remix Channel: @oub-remix \
+        \nJoin the oub-remix Chat: @remixsupport")
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 
 @register(outgoing=True, pattern="^.creator$")

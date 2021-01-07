@@ -11,6 +11,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/9h1i5ng3bjqgq11j?svg=true)](https://ci.appveyor.com/project/niteshraj2310/remixgeng-w0cvp)
 [![StyleCI](https://github.styleci.io/repos/279673883/shield?branch=sql-extended)](https://github.styleci.io/repos/279673883?branch=sql-extended)
 
+<<<<<<< HEAD
 [![DeepSource](https://deepsource.io/gh/niteshraj2310/RemixGeng.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/niteshraj2310/RemixGeng/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/niteshraj2310/RemixGeng.svg/?label=resolved+issues&show_trend=true)](https://deepsource.io/gh/niteshraj2310/RemixGeng/?ref=repository-badge)
 ### `GitHub Integration`
@@ -25,6 +26,9 @@
 # Project 尺 乇 从 工 乂 厶 乇 𠘨 厶
 
 ![logo](https://telegra.ph/file/581d9d1e56d67aab89a14.jpg)
+=======
+![logo](https://telegra.ph/file/b17eb811d1666426e7f3b.jpg)
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 ```
 #include <std/disclaimer.h>
@@ -58,9 +62,13 @@ Deploy to Heroku:
 
 ## Groups and support
 
+<<<<<<< HEAD
 If you want new features, or announcements, you can follow our [OpenUserBot Channel](https://t.me/PaperplaneExtended_news).
+=======
+If you want new features, or announcements, you can follow our [oub-remix Channel](https://t.me/oubremix).
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
-For discussion, bug reporting, and help, you can join [OpenUserBot Support Group](https://t.me/PPE_Support).
+For discussion, bug reporting, and help, you can join [oub-remix support Group](https://t.me/remixsupport).
 
 ## How to setup Google Drive
 [![SetGDRIVE](https://telegra.ph/file/fde15d05e4bde3448b01a.png)](https://telegra.ph/How-To-Setup-Google-Drive-04-03)
@@ -72,13 +80,17 @@ Thanks for all :
 * [AvinashReddy3108](https://github.com/AvinashReddy3108) - PaperplaneExtended
 * [Mkaraniya](https://github.com/mkaraniya) - OpenUserBot
 * [DevPatel](https://github.com/Devp73) - OpenUserBot
-* [kandnub](https://github.com/kandnub) - TG-UserBot
 * [༺αиυвιѕ༻](https://github.com/Dark-Princ3) - X-tra-Telegram
 * [MoveAngel](https://github.com/MoveAngel) - One4uBot
 * [keselekpermen69](https://github.com/keselekpermen69) - UserButt
+<<<<<<< HEAD
 * [GengKapak](https://github.com/GengKapak) - DCLXVI and many more people who aren't mentioned here, but may be found in [Contributors](https://github.com/sahyam2019/oub-remix/graphs/contributors).
 
 
+=======
+
+and many more people who aren't mentioned here, but may be found in [Contributors](https://github.com/sahyam2019/oub-remix/graphs/contributors).
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 ## License
 

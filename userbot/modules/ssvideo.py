@@ -9,13 +9,17 @@ import os
 import time
 
 from telethon.tl.types import DocumentAttributeFilename
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 from userbot import CMD_HELP, bot
 from userbot.events import register
 from userbot.utils import progress
 
 
 @register(outgoing=True, pattern=r"^\.ssvideo(?: |$)(.*)")
+<<<<<<< HEAD
 async def ssvideo(event):
     if not event.reply_to_msg_id:
         await event.edit("`Reply to any media..`")
@@ -44,10 +48,34 @@ async def ssvideo(event):
         return await event.edit("`Unsupported files..`")
     c_time = time.time()
     await event.edit("`Downloading media..`")
+=======
+async def ssvideo(framecap):
+    if not framecap.reply_to_msg_id:
+        return await framecap.edit("`reply to video!`")
+    reply_message = await framecap.get_reply_message()
+    if not reply_message.media:
+        return await framecap.edit("`reply to a video!`")
+    try:
+        frame = int(framecap.pattern_match.group(1))
+        if frame > 10:
+            return await framecap.edit("`hey..dont put that much`")
+    except BaseException:
+        return await framecap.edit("`Please input number of frame!`")
+    if (reply_message.photo
+            or (DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
+                in reply_message.media.document.attributes)
+            or (DocumentAttributeFilename(file_name="sticker.webp")
+                in reply_message.media.document.attributes)
+            ):
+        return await framecap.edit("`Unsupported files!`")
+    c_time = time.time()
+    await framecap.edit("`Downloading media...`")
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
     ss = await bot.download_media(
         reply_message,
         "anu.mp4",
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+<<<<<<< HEAD
             progress(d, t, event, c_time, "[DOWNLOAD]")
         ),
     )
@@ -70,3 +98,23 @@ async def ssvideo(event):
 CMD_HELP.update(
     {"ssvideo": "`>.ssvideo <frame>`" "\nUsage: to ss video frame per frame"}
 )
+=======
+            progress(d, t, framecap, c_time, "[DOWNLOAD]")
+        ),
+    )
+    try:
+        await framecap.edit("`Proccessing...`")
+        command = f"vcsi -g {frame}x{frame} {ss} -o ss.png "
+        os.system(command)
+        await framecap.client.send_file(
+            framecap.chat_id,
+            "ss.png",
+            reply_to=framecap.reply_to_msg_id,
+        )
+        await framecap.delete()
+    except BaseException as e:
+        await framecap.edit(f"{e}")
+    os.system("rm -rf *.png *.mp4")
+
+
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0

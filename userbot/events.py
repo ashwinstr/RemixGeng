@@ -105,7 +105,7 @@ def register(**args):
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**REMIX ERROR REPORT**\n"
-                    link = "[OUB REMIX](https://t.me/PPE_SUPPORT)"
+                    link = "[OUB REMIX](https://t.me/remixsupport)"
                     text += "If you want to, you can report it"
                     text += f"- just forward this message to {link}.\n"
                     text += "Nothing is logged except the fact of error and date\n"
@@ -145,6 +145,7 @@ def register(**args):
                     with open("error.txt", "w+") as file:
                         file.write(ftext)
 
+<<<<<<< HEAD
                     # if LOGSPAMMER:
                     #    await check.respond(
                     #        "`Sorry, my userbot has crashed.\
@@ -155,6 +156,21 @@ def register(**args):
                     #                             "error.log",
                     #                             caption=text)
                     remove("error.log")
+=======
+                    #if LOGSPAMMER:
+                      #  sorry_msg = await check.respond(
+                       #    "`Sorry,userbot has crashed.\
+                    #    \nCheck botlog group for error logs.`"
+                      #  )
+                     #   await asyncio.sleep(3.5)
+                     #   await sorry_msg.delete()
+
+
+                   # await check.client.send_file(send_to,
+                   #                              "error.txt",
+                     #                            caption=text)
+                    remove("error.txt")
+>>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             else:
                 pass
 
