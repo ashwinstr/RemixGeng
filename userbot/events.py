@@ -23,7 +23,7 @@ def register(**args):
     pattern = args.get('pattern', None)
     disable_edited = args.get('disable_edited', True)
     ignore_unsafe = args.get('ignore_unsafe', False)
-    unsafe_pattern = r'^[^/!,#@\$A-Za-z]'
+    unsafe_pattern = r'^[^/!#@\$A-Za-z]'
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     disable_errors = args.get('disable_errors', False)
@@ -105,7 +105,7 @@ def register(**args):
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**REMIX ERROR REPORT**\n"
-                    link = "[OUB REMIX](https://t.me/remixsupport)"
+                    link = "[OUB REMIX](https://t.me/PPE_SUPPORT)"
                     text += "If you want to, you can report it"
                     text += f"- just forward this message to {link}.\n"
                     text += "Nothing is logged except the fact of error and date\n"
@@ -145,7 +145,6 @@ def register(**args):
                     with open("error.txt", "w+") as file:
                         file.write(ftext)
 
-<<<<<<< HEAD
                     # if LOGSPAMMER:
                     #    await check.respond(
                     #        "`Sorry, my userbot has crashed.\
@@ -156,21 +155,6 @@ def register(**args):
                     #                             "error.log",
                     #                             caption=text)
                     remove("error.log")
-=======
-                    #if LOGSPAMMER:
-                      #  sorry_msg = await check.respond(
-                       #    "`Sorry,userbot has crashed.\
-                    #    \nCheck botlog group for error logs.`"
-                      #  )
-                     #   await asyncio.sleep(3.5)
-                     #   await sorry_msg.delete()
-
-
-                   # await check.client.send_file(send_to,
-                   #                              "error.txt",
-                     #                            caption=text)
-                    remove("error.txt")
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
             else:
                 pass
 

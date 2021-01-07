@@ -35,16 +35,9 @@ for module_name in ALL_UMODULES:
 LOGS.info(f"You are running 尺 乇 从 工 乂 厶 乇 𠘨 厶 [{BOT_VER}]")
 
 LOGS.info(
-<<<<<<< HEAD
     "Congratulations Lamvde, your userbot is now running !! Test it by typing .start/.ping in any chat."
     "\nIf you need assistance, head to https://t.me/PPE_Support")
 
-=======
-    "Congratulations, your userbot is now running !! Test it by typing .start/.ping in any chat."
-    "\nIf you need assistance, head to https://t.me/remixsupport")
-    
-    
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
