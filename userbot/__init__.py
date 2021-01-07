@@ -158,9 +158,6 @@ TERM_ALIAS = os.environ.get("TERM_ALIAS", "oub-remix")
 # Bot version
 BOT_VER = os.environ.get("BOT_VER", "3.4")
 
-#Bot version
-BOT_VER = os.environ.get("BOT_VER", "4.0")
-
 # Default .alive logo
 ALIVE_LOGO = (os.environ.get("ALIVE_LOGO")
               or "https://telegra.ph/file/7714b2fd458c5e678d1a6.jpg")
@@ -316,13 +313,8 @@ with bot:
     except BaseException:
         LOGS.info(
             "BOTLOG_CHATID environment variable isn't valid"
-<<<<<<< HEAD
             "Please generate proper group id and set.You can ask in @PPE_Support if you need help")
         sys.exit(1)
-=======
-            "Please generate proper group id and set.You can ask in @remixsupport if you need help")
-        quit(1)
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
 
 StartTime = time.time()
 
@@ -420,12 +412,8 @@ with bot:
                             ),
                             custom.Button.url(
                                 "Support",
-<<<<<<< HEAD
                                 "https://t.me/PPE_Support"),
                         ],
-=======
-                                "https://t.me/remixsupport")],
->>>>>>> aa6c8c6c4f3f7bf54a31feb0ff4696a83a5f7fb0
                     ],
                     link_preview=False,
                 )
