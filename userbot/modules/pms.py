@@ -81,7 +81,7 @@ async def permitpm(event):
                     await event.respond(
                        "`I told you I don't like PM,`\n"
                         "`you are now blocked and reported😼.`"
-                        "`if its really important mention me in group.✨🦋\n"
+                        "`if its really important mention me in group.`✨🦋\n"
                     )
 
                     try:
